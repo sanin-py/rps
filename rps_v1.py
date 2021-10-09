@@ -1,4 +1,3 @@
-# Colors
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
@@ -12,36 +11,15 @@ class color:
    END = '\033[0m'
 
 
-
-
-
-
-
-
-
-
-# Introduction to the game.
 print(f'''
   {color.BOLD}{color.UNDERLINE}Play{color.END}{color.UNDERLINE} {color.CYAN}Rock Paper Scissors{color.END}{color.UNDERLINE} {color.BOLD}with computer{color.END}
 
 • You will be playing with a computer program made by me.
-• By default, there are 3 rounds in the game.\n  But, if you want to change the number of rounds, you can do that as well.
-• One with the most number of {color.GREEN}points{color.END} at the end of\n  the final round will win.
-• If you feel like, to stop the game in between, just enter 'Quit'.
+• There are 3 rounds. One  with the most number of {color.GREEN}points{color.END} at the end of\n  the final round will win.
 • Choose Rock, Paper, or Scissors; type what you chose and click Enter.
 • Computer will choose from the same and send along with you :)
 ''')
 
-
-
-
-
-
-
-
-
-
-# Enter START to begin the game.
 while True:
 	begin = input(f'''• Type {color.YELLOW}Start{color.END} below and click Enter to begin:
 ~ ''').lower()
@@ -51,65 +29,13 @@ while True:
 		print('  I can\'t understand you.')
 
 
-
-
-
-
-
-
-
-
-# User can choose howmany rounds he/she wants.
-print("• Do you want to change the number of rounds?")
-while True:
-	change_rounds = input(f"  Enter {color.YELLOW}Y{color.END} (yes) to change and {color.YELLOW}N{color.END} (no) to not.\n~ ").lower()
-	if change_rounds == 'y':
-		while True:
-			try:
-				rounds_user_needs = input("• Howmany rounds do you need?\n~ ")
-				if rounds_user_needs == '0':
-					print("  Is it possible to play a game with zero rounds you idiot?")
-					continue
-				rounds_user_needs = int(rounds_user_needs)
-				break
-			except ValueError:
-				print("  You are supposed to enter only a counting number (as number, not word).")
-				continue
-		break
-	elif change_rounds == 'n':
-		rounds_user_needs = 3
-		break
-	else:
-		continue
-
-if rounds_user_needs == 1:
-	print(f"  Alright, {rounds_user_needs} round set.")
-
-else:
-	if rounds_user_needs > 20:
-		print(f"  {rounds_user_needs} rounds! That's hell of a selection. Let's see who wins.\n  {rounds_user_needs} rounds set.")
-	else:
-		print(f"  Alright, {rounds_user_needs} rounds set.")
-
-
-
-
-
-
-
-
-
-
-# The rules of Stone, Paper and Scissors are coded from here on.
 import random
 computer_options = ['Rock','Paper','Scissors']
 rounds = 0
 computer_points = 0
 user_points = 0
-while rounds < rounds_user_needs:
-	print()
-	print('• Round ' + f'{rounds + 1}')
-	user_choice = input(f'''  Choose Rock, Paper, or Scissors.
+while rounds < 3:
+	user_choice = input(f'''• Choose Rock, Paper, or Scissors.
   {color.GREEN}You:{color.END} ''').title()
 	computer_choice = random.choice(computer_options)
 	print(f'  {color.RED}Computer:{color.END} ' + computer_choice)
@@ -188,33 +114,17 @@ while rounds < rounds_user_needs:
 		print(f"          {color.RED}:{color.END} Type something man. ")
 
 
-	elif user_choice == 'Quit':
-		print("  Game terminated.")
-		rounds_user_needs = 0
-
-
 	else:
-		print(f"          {color.RED}:{color.END} Don't type bullshit man.")
+		print(f"          {color.RED}:{color.END} Don't type rubbish man.")
 
 
 
-
-
-
-
-
-
-
-# Game results:
 else:
-	print()
-	print(f"  {color.PURPLE}ALL ROUNDS ARE OVER{color.END}")
-	print()
-	results = input(f"• Type {color.BOLD}{color.YELLOW}R{color.END} and click Enter to see the final results: ").lower()
-	print()
+	results = input(f"""
+• {color.PURPLE}Three rounds are over{color.END}
+• Type {color.BOLD}{color.YELLOW}R{color.END} and click Enter to see the final results: """).lower()
 	while results != 'r':
-		results = input(f"• Enter {color.BOLD}{color.YELLOW}R{color.END} to see the final results: ").lower()
-		print()
+		results = input(f"• Type {color.BOLD}{color.YELLOW}R{color.END} to see the final results: ").lower()
 	if results == 'r':
 		if computer_points == 0:
 			print(f'> Computer scored nothing.')
@@ -244,16 +154,6 @@ else:
 			print("> So, it's a tie!")
 
 
-
-
-
-
-
-
-
-
-
-# End Credits:
 print("")
 print('  [A game by Sanin]')
 print("")
