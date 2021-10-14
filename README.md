@@ -1,2 +1,2 @@
 # rps
-Test the prototype of my new project
+Test the prototype of my project
